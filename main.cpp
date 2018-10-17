@@ -69,13 +69,11 @@ Tree::Tree()
 {
      root = NULL;
 }
-
 // Destructor
 Tree::~Tree() 
 {
      freeNode(root);
 }
-
 // Free the node and all of its children by recursion
 void Tree::freeNode(Node* leaf)
 {
@@ -86,7 +84,6 @@ void Tree::freeNode(Node* leaf)
        delete leaf;
     }
 }
-
 // Add a node
 // if root doesn't exist create it, 
 // otherwise send the key and root to other addNode function
@@ -117,7 +114,7 @@ void Tree::addNode( contact key, Node* leaf)
 {
     if ( key.phoneNumber <= leaf->KeyPN() ) 
     {
-       if ( leaf->Left() != NULL )
+       if ( leaf->Left())
           addNode(key, leaf->Left());
        else 
        {
@@ -128,7 +125,7 @@ void Tree::addNode( contact key, Node* leaf)
     }
     else 
     {
-       if ( leaf->Right() != NULL )
+       if ( leaf->Right())
           addNode(key, leaf->Right());
        else 
        {
@@ -173,13 +170,13 @@ Node* Tree::delete_node(Node* n, int leaf)
            cout<<"\n"<<n->KeyName()<<" deleted.\n";
            delete n;
            return NULL;
-        }else if ( n->Left() != NULL && n->Right() == NULL )
+        }else if ( n->Left() && n->Right())
         {
            Node* temp = n->Left();
            cout<<"\n"<<n->KeyName()<<" deleted.\n";
            delete n;
            return temp;
-        }else if ( n->Left() == NULL && n->Right() != NULL )
+        }else if ( n->Left() && n->Right())
         {
            Node* temp = n->Right();
            cout<<"\n"<<n->KeyName()<<" deleted.\n";
